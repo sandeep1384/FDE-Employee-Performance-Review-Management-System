@@ -545,15 +545,14 @@ Execute `database/schema.sql` against `employee_performance_db` using
 
 ### 7. Start the FastAPI Application
 
-If the application entry point is `main.py` and the FastAPI instance is
-named `app`, run:
+From the repository root, start the FastAPI application with:
 
-``` bash
-uvicorn main:app --reload
+``` powershell
+.\.venv\Scripts\python.exe -m uvicorn main:app --reload
 ```
 
-Adjust `main:app` to match the actual module and application variable in
-your repository.
+The root `main.py` exposes the application defined in `app.main`. If
+Uvicorn is available on your `PATH`, `uvicorn main:app --reload` also works.
 
 ### 8. Open the API Documentation
 

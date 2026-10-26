@@ -39,7 +39,7 @@ CREATE TABLE performance_reviews (
     teamwork_rating INTEGER NOT NULL,
 
     average_rating DECIMAL(3,2) NOT NULL,
-    comments TEXT,
+    comments TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(),
 
     CONSTRAINT fk_review_employee
@@ -60,7 +60,10 @@ CREATE TABLE performance_reviews (
         CHECK (teamwork_rating BETWEEN 1 AND 5),
 
     CONSTRAINT chk_average_rating
-        CHECK (average_rating BETWEEN 1 AND 5)
+        CHECK (average_rating BETWEEN 1 AND 5),
+
+    CONSTRAINT uq_performance_reviews_employee_period
+        UNIQUE (employee_id, period_id)
 );
 
 -- Indexes for common lookup operations
