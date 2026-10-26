@@ -11,6 +11,7 @@ the relational database.
 -   [Features](#features)
 -   [Technology Stack](#technology-stack)
 -   [Application Screens](#application-screens)
+-   [Application Walkthrough](#application-walkthrough)
 -   [Database Design](#database-design)
 -   [API Specification](#api-specification)
 -   [Example API Requests and
@@ -81,6 +82,10 @@ schema at `http://localhost:8000/openapi.json`.
 
 ## Application Screens
 
+The application now includes a responsive React + TypeScript frontend,
+organized into reusable components, API hooks, typed models, and page
+views under `UI/src/`.
+
 ### 1. Submit Performance Review --- Mandatory
 
 The form includes:
@@ -117,6 +122,31 @@ Pagination is recommended for larger datasets.
 
 The details screen displays employee information, review period, overall
 rating, individual criterion ratings, and manager comments.
+
+### Frontend workflow
+
+-   **Dashboard:** overview of employee and review activity, average
+    ratings, and recent reviews.
+-   **Submit review:** choose an employee and open review period, rate
+    all three performance criteria, and enter required comments. The
+    form shows a live average preview and reports API validation errors.
+-   **Review history:** browse reviews, filter by employee or period, and
+    navigate through paginated results.
+-   **Review details:** view employee and period information, individual
+    ratings, the overall score, submission date, and comments.
+-   **Employees and review periods:** browse the employee directory and
+    configured review cycles.
+
+## Application Walkthrough
+
+The following recording demonstrates the application flow:
+
+[▶ Watch the application walkthrough](docs/demo/application-flow.mp4)
+
+<video controls width="100%" preload="metadata">
+  <source src="docs/demo/application-flow.mp4" type="video/mp4">
+  Your Markdown viewer does not support embedded video.
+</video>
 
 ## Database Design
 
@@ -565,7 +595,8 @@ disabled.
 
 ### 9. Start the React Frontend
 
-The React + TypeScript frontend is in `UI/`. In a second terminal, run:
+The React + TypeScript frontend is in `UI/`. With the backend running,
+open a second terminal from the repository root and run:
 
 ``` powershell
 Set-Location UI
@@ -573,10 +604,11 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173`. The Vite development server proxies `/api`
-requests to the FastAPI server at `http://127.0.0.1:8000`. The frontend
-includes the dashboard, employee and review-period directories, review
-submission form, review history, and review details screens.
+Open `http://localhost:5173`. Vite proxies `/api` requests to the
+FastAPI server at `http://127.0.0.1:8000`.
+
+To create a production build, run `npm run build` from `UI/`. The
+optimized static files are written to `UI/dist/`.
 
 To use a different API URL, copy `UI/.env.example` to `UI/.env` and set
 `VITE_API_BASE_URL`. For browser access from another frontend origin, add
