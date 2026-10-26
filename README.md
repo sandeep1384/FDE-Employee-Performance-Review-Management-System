@@ -563,6 +563,25 @@ Uvicorn is available on your `PATH`, `uvicorn main:app --reload` also works.
 These documentation routes are FastAPI defaults unless customized or
 disabled.
 
+### 9. Start the React Frontend
+
+The React + TypeScript frontend is in `UI/`. In a second terminal, run:
+
+``` powershell
+Set-Location UI
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173`. The Vite development server proxies `/api`
+requests to the FastAPI server at `http://127.0.0.1:8000`. The frontend
+includes the dashboard, employee and review-period directories, review
+submission form, review history, and review details screens.
+
+To use a different API URL, copy `UI/.env.example` to `UI/.env` and set
+`VITE_API_BASE_URL`. For browser access from another frontend origin, add
+that origin to `FRONTEND_ORIGINS` in the backend environment.
+
 ## Testing Strategy
 
 ### Functional Testing
