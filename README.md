@@ -19,7 +19,7 @@ the relational database.
 -   [Business Rules and Validation](#business-rules-and-validation)
 -   [Setup and Installation](#setup-and-installation)
 -   [Testing Strategy](#testing-strategy)
--   [Suggested Project Structure](#suggested-project-structure)
+-   [Current Project Structure](#current-project-structure)
 -   [Future Enhancements](#future-enhancements)
 
 ## Project Overview
@@ -670,32 +670,88 @@ SELECT
 FROM performance_reviews;
 ```
 
-## Suggested Project Structure
+## Current Project Structure
 
-This is a suggested structure; adapt it to the existing repository.
+The repository is organized into a FastAPI backend and a React + TypeScript
+frontend:
 
 ``` text
 employee-performance-review/
 ├── app/
+│   ├── __init__.py
 │   ├── main.py
+│   ├── database.py
+│   ├── models/
+│   │   └── __init__.py
 │   ├── routers/
+│   │   ├── __init__.py
 │   │   ├── employees.py
 │   │   ├── review_periods.py
 │   │   └── reviews.py
-│   ├── models/
 │   ├── schemas/
-│   ├── services/
-│   └── database.py
+│   │   └── __init__.py
+│   └── services/
+│       ├── __init__.py
+│       ├── employees.py
+│       ├── review_periods.py
+│       └── reviews.py
 ├── database/
 │   └── schema.sql
 ├── tests/
+│   ├── __init__.py
+│   └── test_api_contract.py
 ├── docs/
-│   └── openapi.yaml
+│   ├── openapi.yaml
+│   └── demo/
+│       └── application-flow.mp4
+├── UI/
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   ├── vite.config.ts
+│   ├── .env.example
+│   └── src/
+│       ├── App.tsx
+│       ├── main.tsx
+│       ├── styles.css
+│       ├── vite-env.d.ts
+│       ├── components/
+│       │   ├── Alert.tsx
+│       │   ├── AppShell.tsx
+│       │   ├── Brand.tsx
+│       │   ├── EmptyState.tsx
+│       │   ├── LoadingState.tsx
+│       │   ├── PageHeading.tsx
+│       │   ├── RatingStars.tsx
+│       │   ├── RatingSummary.tsx
+│       │   ├── ReviewTable.tsx
+│       │   └── Sidebar.tsx
+│       ├── hooks/
+│       │   ├── useApiResource.ts
+│       │   ├── useEmployees.ts
+│       │   ├── useReviewPeriods.ts
+│       │   └── useReviews.ts
+│       ├── lib/
+│       │   └── api.ts
+│       ├── pages/
+│       │   ├── DashboardPage.tsx
+│       │   ├── EmployeesPage.tsx
+│       │   ├── ReviewDetailsPage.tsx
+│       │   ├── ReviewFormPage.tsx
+│       │   ├── ReviewPeriodsPage.tsx
+│       │   └── ReviewsPage.tsx
+│       └── types/
+│           └── api.ts
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt
+├── main.py
 └── README.md
 ```
+
+Generated directories such as `.venv/`, `UI/node_modules/`, and
+`UI/dist/` are excluded from this overview.
 
 ## Future Enhancements
 
